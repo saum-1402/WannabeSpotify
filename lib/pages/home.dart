@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:spotify/pages/playscreen.dart';
 
 class MyClipper extends CustomClipper<Rect> {
   @override
@@ -76,18 +76,23 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
-              children: const [
-                Card(
-                  color: Colors.black,
-                  child: Image(
-                    image: AssetImage('images/la_la_land.jpg'),
-                    // fit: BoxFit,
-                    // style: TextStyle(
-                    //   color: Colors.white
-                    // ),
+              children:  [
+                GestureDetector(
+                  onTap:() {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const PlayScreen()));
+                  },
+                  child: const Card(
+                    color: Colors.black,
+                    child: Image(
+                      image: AssetImage('images/la_la_land.jpg'),
+                      // fit: BoxFit,
+                      // style: TextStyle(
+                      //   color: Colors.white
+                      // ),
+                    ),
                   ),
                 ),
-                Card(
+                const Card(
                   color: Colors.black,
                   child: Image(
                     image: AssetImage('images/Interstellar.jpg'),
@@ -97,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // ),
                   ),
                 ),
-                Card(
+                const Card(
                   color: Colors.black,
                   child: Image(
                     image: AssetImage('images/spiderman.jpg'),
@@ -107,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // ),
                   ),
                 ),
-                Card(
+                const Card(
                   color: Colors.black,
                   child: Image(
                     image: AssetImage('images/AR_Rahman.jpg'),
