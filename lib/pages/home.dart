@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Card(
                   color: Colors.black,
                   child: Image(
-                    image: AssetImage('images/AR_Rahman.jpg'),
+                    image: AssetImage('images/dune2.jpg'),
                     // fit: BoxFit,
                     // style: TextStyle(
                     //   color: Colors.white
