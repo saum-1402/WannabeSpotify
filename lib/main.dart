@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/pages/home.dart';
+import 'package:spotify/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        // brightness: Brightness.dark
+        brightness: Brightness.dark
       ),
-      home: const HomeScreen(),
+      // home: const HomeScreen(),
+      home: const LoginPage(),
     );
+
   }
 }
 
