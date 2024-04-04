@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "248227314106",
+    "project_id": "wannabespotify",
+    "storage_bucket": "wannabespotify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248227314106:android:844a91d3d0d9ecf829c583",
+        "android_client_info": {
+          "package_name": "com.saumil.spotify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT4jZWDkC1mwffkTgmpiqPKqOEbvifSIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
