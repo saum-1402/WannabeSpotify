@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify/pages/home.dart';
+import 'package:spotify/pages/playscreen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,11 +10,14 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-final TextEditingController logidController = TextEditingController();
-final TextEditingController passwordController = TextEditingController();
 
 
 class _LoginPageState extends State<LoginPage> {
+  final _auth = FirebaseAuth.instance;
+
+  final TextEditingController logidController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +39,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 width: 300,
                 child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
                   controller: logidController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Enter Login ID",
-                    labelText: "Login ID",
+                    hintText: "Login ID",
+                    alignLabelWithHint: false,
                   ),
                 ),
               ),
@@ -49,12 +56,15 @@ class _LoginPageState extends State<LoginPage> {
                 width: 300,
                 height: 50,
                 child: TextField(
+                  textAlign: TextAlign.center,
+                  // onChanged: (value){
+                  //   password=value         //extracing the strings can also be done using this
+                  // },
                   controller: passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Password",
-                    labelText: "Password",
                   ),
                 ),
               ),
@@ -62,17 +72,24 @@ class _LoginPageState extends State<LoginPage> {
                 style: const ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(Colors.green),
                 ),
-                onPressed: (){
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(builder: (context)=> const HomeScreen()),
-                  // );
+                onPressed: () async {
                   print(logidController.text);
+                  print(passwordController.text);
+                  try {
+                    final newSignin = await _auth.createUserWithEmailAndPassword(
+                        email: logidController.text,
+                        password: passwordController.text);
+
+                    if(newSignin!=null){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomeScreen()),);
+                    }
+                  } catch (e) {
+                    print(e.toString());
+                  }
                 },
-                child: const Text("Sign in",
-                style: TextStyle(
-                  color: Colors.black
-                ),
+                child: const Text(
+                  "Sign in",
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
             ],
