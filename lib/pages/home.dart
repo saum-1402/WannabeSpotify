@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/pages/playscreen.dart';
+import 'package:spotify/user/playlist.dart';
 
 class MyClipper extends CustomClipper<Rect> {
   @override
@@ -26,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Row(
-          children: const [
+        title: const Row(
+          children: [
             CircleAvatar(
               backgroundColor: Colors.purpleAccent,
               radius: 20,
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Chip(
               label: Text(
-                "Podcasts",
+                "Artists",
                 style: TextStyle(color: Colors.white),
               ),
               backgroundColor: Colors.black45,
@@ -71,68 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Column(
+      body: const Column(
         children: [
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              children:  [
-                GestureDetector(
-                  onTap:() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const PlayScreen()));
-                  },
-                  child: const Card(
-                    color: Colors.black,
-                    child: Image(
-                      image: AssetImage('images/la_la_land.jpg'),
-                      // fit: BoxFit,
-                      // style: TextStyle(
-                      //   color: Colors.white
-                      // ),
-                    ),
-                  ),
-                ),
-                const Card(
-                  color: Colors.black,
-                  child: Image(
-                    image: AssetImage('images/Interstellar.jpg'),
-                    // fit: BoxFit,
-                    // style: TextStyle(
-                    //   color: Colors.white
-                    // ),
-                  ),
-                ),
-                const Card(
-                  color: Colors.black,
-                  child: Image(
-                    image: AssetImage('images/spiderman.jpg'),
-                    // fit: BoxFit,
-                    // style: TextStyle(
-                    //   color: Colors.white
-                    // ),
-                  ),
-                ),
-                const Card(
-                  color: Colors.black,
-                  child: Image(
-                    image: AssetImage('images/dune2.jpg'),
-                    // fit: BoxFit,
-                    // style: TextStyle(
-                    //   color: Colors.white
-                    // ),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+          PlayList()
+          ],
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
           // notchMargin: 25,
           color: Colors.transparent,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
+            children: [
               Icon(
                 Icons.home_filled,
                 color: Colors.black,
@@ -154,7 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 size: 40,
               ),
             ],
-          )),
+          ),
+      ),
     );
   }
 }
